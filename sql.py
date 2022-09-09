@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@127.0.0.1:3
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 db = SQLAlchemy(app)
 
-
+#创建表结构
 class cases(db.Model):
     __tablename__='cases'
     id = db.Column(db.Integer, primary_key=True)
