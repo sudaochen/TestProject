@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, escape, request
+from flask import Flask, escape, request,send_from_directory
 from flask import session
 from flask_restful import Api, Resource, abort
 from flask_sqlalchemy import SQLAlchemy
@@ -17,17 +17,30 @@ api = Api(app)  # 如果需要从接口返回字符串等内容，尽量使用�
 # app.secret_key = 'secretmethod'
 #
 #
-@app.route('/')
-def hello():
-    word = 'world'
-    # print(word)
-    gets=request.args
-    if "n" in gets:
-        print(gets)
-        return 'OK'
+@app.route('/op',methods=['get'])
+def op():
+    return send_from_directory('./','train.json',as_attachment=True)
 
-    else:
-        return  'false'
+def get_client_ip(request):
+    ip=request.remote_addr
+    print(ip)
+    return ip
+@app.route("/ipconfig")
+def get():
+
+    if get_client_ip(request) != "127.0.0.1":
+        return "Your ip is not allowed for this url! Please use developer's ip"
+    return get_client_ip(request)
+
+    # word = 'world'
+    # print(word)
+    # gets=request.args
+    # if "n" in gets:
+    #     print(gets)
+    #     return 'OK'
+    #
+    # else:
+    #     return  'false'
         # return f'Hello,{word}'
 #
 #
