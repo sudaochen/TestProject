@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button>alert</button>>
+        <div v-if="show">展示</div>
+        <div v-else>不展示</div>    
+        <div v-show="show">v-show-test</div>
+        <!-- 讲解v-if  v-show之间的区别:前者是逻辑层面的判定展示与否 dom结构中不加标签  后者判定不展示时会改变在dom中的display属性值 -->
+        <p v-for="(index,value) in arr">{{index}}--{{value}}</p>
+        <p v-for="(key,value) in obj">{{key}}--{{value}}--index</p>
+        <p v-for="(index,value) in objarr">{{index}}--{{value.name}}--{{value.age}}</p>
+
+        <button v-on:click="countadd()">+1</button>  <button v-on:click="countsub()">-1</button>
+        <div>{{count}}</div>
+
+        <div style="width: 100px;height: 100px;border: 1px solid #000;" v-bind:style="bgcolor"></div>
+
+        <input type="text" v-model="texttext">
+
+        <button @click="showtext()">打印</button>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue(
+            {
+                el:'#app',
+                data:{
+                    msg:"Hello vue123",
+                    show:false,
+                    arr:["001","002","003","004"],
+                    obj:{name:"zhangsan",age:"18",sex:"male"},
+                    objarr:[
+                        {name:"lisi",age:"21",sex:"female"},
+                        {name:"wangwu",age:"26",sex:"female"},
+                        {name:"zhaoliu",age:"32",sex:"female"}
+
+                    ],
+                    count:1,
+                    bgcolor:{
+                        backgroundcolor:"red"
+                    },
+                    texttext:"input here"
+                },
+                methods:{
+                    countadd(){
+                        this.count++
+                    },
+                    countsub(){
+                        this.count--
+                    },
+                    showtext(){
+                        console.log(this.texttext)
+                    }
+                    
+                },
+                created(){
+                    console.log("加载完成")
+                },
+            }
+        )
+    </script>
+</body>
+</html>

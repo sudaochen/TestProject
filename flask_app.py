@@ -2,10 +2,14 @@ import json
 
 from flask import Flask, escape, request,send_from_directory
 from flask import session
+from flask_cors import cross_origin, CORS
+
+
 from flask_restful import Api, Resource, abort
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@127.0.0.1:3306/testcases?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -17,6 +21,23 @@ api = Api(app)  # 如果需要从接口返回字符串等内容，尽量使用�
 # app.secret_key = 'secretmethod'
 #
 #
+
+@app.route('/welcome')
+def firstpage():
+    return "WELCOME    TO   ZIIPIN   TEST-CENTER"
+
+@app.route('/login',methods=['post'])
+@cross_origin()
+def login():
+    data=request.get_json()
+    print(data)
+    user=data["username"]
+    pwd=data["password"]
+    if user=="admin" and pwd=="123456":
+        return "ok"
+    else:
+        return "no"
+
 @app.route('/op',methods=['get'])
 def op():
     return send_from_directory('./','train.json',as_attachment=True)
