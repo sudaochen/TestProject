@@ -4,7 +4,7 @@
         <v-text-field v-model="user"  label="用户名"></v-text-field>
         <v-text-field v-model="password"  label="密码" type="password"></v-text-field>
         <v-btn color="primary" @click="sign_in()">登录</v-btn>
-        <v-btn>注册 </v-btn>
+        
     </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
                 username:this.user,
                 password:this.password
             }
-            // console.log(post_data)
+            console.log(post_data,typeof(post_data))
             this.$api.user.signin(post_data).then((result) => {
                 if(result["data"]=="ok"){
                 this.$router.push({name:'testhome'})

@@ -1,4 +1,4 @@
-import user from './sign'
+import user from './user_use'
 const api={
     user
 }
