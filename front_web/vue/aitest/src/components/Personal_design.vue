@@ -31,7 +31,7 @@
     </v-dialog>
     <v-btn color="primary" class="btn" @click="addDialog=true">增加测试数据</v-btn>
 
-
+    <div id="main" style="width:500px;height:500px">echarts</div>
     </div>
     
 </template>
@@ -44,6 +44,25 @@ export default {
             newid:'',
             newcasestep:'',
         }
+    },
+    mounted(){
+        var echarts=require('echarts');
+        var mychart=echarts.init(document.getElementById('main'));
+        mychart.setOption({
+            title:{
+                text:"echarts 示例"
+            },
+            tooltip:{},
+            xAixs:{
+                data:[1,2,3,4,5]
+            },
+            yAxis:{},
+            series:[{
+                name:"xx",
+                type:"yy",
+                data:[11,22,33,44,55,66]
+            }]
+        });
     },
     methods:{
         postnewcase(){

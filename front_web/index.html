@@ -9,11 +9,12 @@
 <body>
     <div id="app">
         {{msg}}
-        <button>alert</button>>
+        <button v-on:click="change()">alert</button>>
         <div v-if="show">展示</div>
         <div v-else>不展示</div>    
         <div v-show="show">v-show-test</div>
         <!-- 讲解v-if  v-show之间的区别:前者是逻辑层面的判定展示与否 dom结构中不加标签  后者判定不展示时会改变在dom中的display属性值 -->
+        <!-- v-show 和 v-if的本质都是通过true和false来决定是否显示的 -->
         <p v-for="(index,value) in arr">{{index}}--{{value}}</p>
         <p v-for="(key,value) in obj">{{key}}--{{value}}--index</p>
         <p v-for="(index,value) in objarr">{{index}}--{{value.name}}--{{value.age}}</p>
@@ -27,10 +28,15 @@
 
         <button @click="showtext()">打印</button>
 
+
+
+        <p>  <input type="text" v-model="content"> </p>
+        <ul v-for=" i  in  baiduresult">{{i}}</ul>
+
     </div>
     <script src="./vue.js"></script>
     <script>
-        new Vue(
+        var vm = new Vue(
             {
                 el:'#app',
                 data:{
@@ -48,7 +54,9 @@
                     bgcolor:{
                         backgroundcolor:"red"
                     },
-                    texttext:"input here"
+                    texttext:"input here",
+                    content:"",
+                    baiduresult:[1,2,3]
                 },
                 methods:{
                     countadd(){
@@ -59,14 +67,41 @@
                     },
                     showtext(){
                         console.log(this.texttext)
-                    }
+                    },
+                    change(){
+                        if(this.show==true){
+                            this.show=false
+                        }else{
+                            this.show=true
+                        }
+                    },
                     
                 },
                 created(){
                     console.log("加载完成")
                 },
+                // 监听函数，将属性值直接写成函数
+                watch:{
+                    content(tmp){
+                        console.log(tmp)
+                        var path="https://sp0.baidu.com/5a1fazu8aa54nxgko9wtanf6hhy/su?wd="+this.content+"&cb=a"
+                        var script = document.createElement("script")
+                        script.src=path
+                        document.body.appendChild(script)
+                        // 直接调用方法访问链接，并在下面定义方法 获得相应的数据返回给vue实例
+                    }
+                }
             }
         )
+        function a(tmp){
+            console.log(tmp);
+            vm.baiduresult=tmp.s;
+
+            
+            
+            
+        }
+            
     </script>
 </body>
 </html>

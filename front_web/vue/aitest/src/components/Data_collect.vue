@@ -28,22 +28,11 @@
         </template>
 
         <template>
-        <div class="text-center">
+        
             <v-dialog
             v-model="dialog"
             width="500"
             >
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                color="red lighten-2"
-                dark
-                v-bind="attrs"
-                v-on="on"
-                class="btn"
-                >
-                导入数据调试
-                </v-btn>
-            </template>
             
 
             <v-card>
@@ -70,11 +59,12 @@
             </v-card>
             
             </v-dialog>
-        </div>
+            <v-btn color="primary" class="btn" @click="dialog=true">导入数据调试</v-btn>
+        
 
         </template>
           <template>
-        <div class="text-center">
+        
             <v-dialog
             v-model="dialog2"
             width="500"
@@ -116,7 +106,7 @@
             </v-card>
             
             </v-dialog>
-        </div>
+        
         </template>
 
         

@@ -187,7 +187,7 @@ class Testcaseget(Resource):
             # print(caseall[0].case_step)
             caselist=[]
             for item in caseall:
-                t = {"id":str(item.id),"case_step":str(item.case_step)}
+                t = {"id":str(item.id),"case_step":str(item.case_step),"name":"测试数据"}
                 caselist.append(t)
             # abort(500)
             print(caselist)

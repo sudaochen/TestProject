@@ -1,5 +1,5 @@
 {
-  "name": "aitest",
+  "name": "standard_platform",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "echarts": "^5.3.3",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
-    "vue-simple-alert": "^1.1.1",
     "vuetify": "^2.6.0",
     "vuex": "^3.6.2"
   },
@@ -46,14 +44,7 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {
-      "generator-star-spacing": "off",
-      "no-tabs": "off",
-      "no-unused-vars": "off",
-      "no-console": "off",
-      "no-irregular-whitespace": "off",
-      "no-debugger": "off"
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",
