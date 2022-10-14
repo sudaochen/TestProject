@@ -17,11 +17,16 @@ import subprocess
 # os.system('curl http://127.0.0.1:5000/testcase_get?id=777')
 
 
-script="python double_balls.py"
+# script="python double_balls.py"
+#
+#
+# # subprocess.check_call(script,cwd="D:\Myproject\\reward")
+#
+#
+# s=os.popen(f"cd D:\Myproject\\reward && {script}")
+# print(s.read().encode(encoding='gbk').decode())
 
 
-# subprocess.check_call(script,cwd="D:\Myproject\\reward")
-
-
-s=os.popen(f"cd D:\Myproject\\reward && {script}")
-print(s.read().encode(encoding='gbk').decode())
+android_path="/Users/guangyi/NinjaMustDie/Tools/deploy_asset_bundle_release"
+script="python upload_util.py --platform=Android --action=upload_to_svn"
+os.popen(f"cd {android_path} && {script}")
